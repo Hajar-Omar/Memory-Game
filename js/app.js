@@ -36,3 +36,89 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+//variables
+var cardsArrNames = [];
+
+//load all card's icons second class
+// for (let i = 0; i < document.querySelectorAll('.card i').length; i++) {
+//     cardsArrNames[i] = document.querySelectorAll('.card i')[i].classList[1];
+// }
+for (let i = 0; i < document.querySelectorAll('.card').length; i++) {
+    cardsArrNames[i] = document.querySelectorAll('.card')[i];
+}
+
+//get random cards
+shuffle(cardsArrNames);
+
+//append cards to deck UL
+for (let i = 0; i < cardsArrNames.length; i++) {
+    document.querySelector('.deck').appendChild(cardsArrNames[i]);
+}
+
+
+document.querySelector('.deck').addEventListener('click', flipCard);
+//
+
+
+
+
+function flipCard(e) {
+
+
+
+    //if card has match dont toggle open and show
+    if (e.target.classList.contains('match') || opendNum == 2) {
+
+    }
+    else {
+        e.target.classList.toggle('open');
+        e.target.classList.toggle('show');
+
+        var opendNum = 0;
+        var compared2Card = [];
+
+        for (var i = 0; i < cardsArrNames.length; i++) {
+            if (cardsArrNames[i].classList.contains('open')) {
+                opendNum++;
+                if (opendNum === 1) {
+                    compared2Card[0] = cardsArrNames[i];
+                }
+                if (opendNum === 2) {
+                    compared2Card[1] = cardsArrNames[i];
+                    break;
+                }
+            }
+        }
+        console.log(compared2Card);
+
+        if (opendNum === 2) {
+            if (compared2Card[0].children[0].classList[1] == compared2Card[1].children[0].classList[1]) {
+                compared2Card[0].classList.add('match');
+                compared2Card[1].classList.add('match');
+            }
+            else { //if not matched
+                compared2Card[0].classList.remove('open');
+                compared2Card[0].classList.remove('show');
+                compared2Card[1].classList.remove('open');
+                compared2Card[1].classList.remove('show');
+            }
+           
+        }
+        else {
+
+        }
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+}
