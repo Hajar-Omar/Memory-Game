@@ -79,6 +79,11 @@ function reset() {
     // moves = 0
     moves = 0;
     document.querySelector('.moves').textContent = 0;
+
+    //reset stars
+    for (var n = 0; n < document.querySelectorAll('.stars li > i').length; n++) {
+        document.querySelectorAll('.stars li > i')[n].className = 'fa fa-star';
+    }
 }
 
 function flipCard(e) {
@@ -113,10 +118,10 @@ function flipCard(e) {
                         }
                         matchedCardsNum++;
                         if (matchedCardsNum === 3) {
-                           document.querySelector('.stars li:nth-child(3) > i').className = 'fa fa-star-o';
+                            document.querySelector('.stars li:nth-child(3) > i').className = 'fa fa-star-o';
                         }
                         if (matchedCardsNum === 6) {
-                           document.querySelector('.stars li:nth-child(2) > i').className = 'fa fa-star-o';                           
+                            document.querySelector('.stars li:nth-child(2) > i').className = 'fa fa-star-o';
                         }
                         if (matchedCardsNum === 8) {
                             //open the winning page
