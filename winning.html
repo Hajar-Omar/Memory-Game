@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Congrats</title>
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <div class="container margin-top">
+        <div class="icon-contnr"><i class="fa fa-check"></i></div>
+        <h1>congratulations! you won!</h1>
+        <h5>With <span class="winMoves">0</span> Moves and <span class="">1</span> Stars.</h5>
+        <h5>Wooooo!</h5>
+        <a href="./index.html" class="green-btn">play again!</a>
+    </div>
+
+
+    <script>
+        var query = window.location.search.substring(1);
+        var moves = query.split("=")[1];
+        document.querySelector('.winMoves').textContent = moves;
+    </script>
+</body>
+
+</html>

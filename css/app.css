@@ -107,3 +107,43 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+/*winning page style*/
+.icon-contnr{
+    color: #10d605;
+    font-size:  30px;
+    font-weight:  100;
+    width: 50px;
+    height: 50px;
+    text-align:  center;
+    border-radius:  50%;
+    border: 2px solid #e4e4e4;
+    padding-top:  4px;
+}
+.green-btn:hover{
+    background-color: white;
+    color:#3fceab;
+    border: 1px solid #3fceab;
+}
+.green-btn{
+    border: 1px solid #3fceab;
+    padding: 4px 30px;
+    background-color:#3fceab;
+    border-radius: 10px;
+    text-decoration: none;
+    color:white;
+    font-size: 16px;
+}
+.margin-top{
+    margin-top: 15%;
+}
+.margin-top h1 {
+    text-transform:  capitalize;
+    color: #484848;
+}
+
+.margin-top h5 {
+    color: #a0a0a0;
+    margin-top: 0;
+}

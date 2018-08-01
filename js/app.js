@@ -72,6 +72,8 @@ document.querySelector('.restart').addEventListener('click', reset);
 function reset() {
     for (let i = 0; i < cardsArrNames.length; i++) {
         cardsArrNames[i].classList.remove('match');
+        cardsArrNames[i].classList.remove('open');
+        cardsArrNames[i].classList.remove('show');
     }
     getRandomListsAndAppend();
     // moves = 0
@@ -111,8 +113,10 @@ function flipCard(e) {
                         }
                         matchedCardsNum++;
                         if (matchedCardsNum === 8) {
-                            // setTimeout(function() {}, 300);
-                            alert('u r won');
+                            //open the winning page
+                            setTimeout(function () {
+                                window.open('./winning.html?moves=' + moves, '_self');
+                            }, 300);
                         }
                     }
                     else { //if not matchin'
