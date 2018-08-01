@@ -39,6 +39,8 @@ function shuffle(array) {
 
 //variables
 var cardsArrNames = [];
+var moves = Number(document.querySelector('.moves').textContent);
+var matchedCardsNum = 0;
 
 //load all card's icons second class
 // for (let i = 0; i < document.querySelectorAll('.card i').length; i++) {
@@ -48,35 +50,44 @@ for (let i = 0; i < document.querySelectorAll('.card').length; i++) {
     cardsArrNames[i] = document.querySelectorAll('.card')[i];
 }
 
-//get random cards
-shuffle(cardsArrNames);
+getRandomListsAndAppend();
 
-//append cards to deck UL
-for (let i = 0; i < cardsArrNames.length; i++) {
-    document.querySelector('.deck').appendChild(cardsArrNames[i]);
+function getRandomListsAndAppend() {
+    //get random cards
+    shuffle(cardsArrNames);
+
+    //append cards to deck UL
+    for (let i = 0; i < cardsArrNames.length; i++) {
+        document.querySelector('.deck').appendChild(cardsArrNames[i]);
+    }
 }
 
 
+
 document.querySelector('.deck').addEventListener('click', flipCard);
-//
 
+document.querySelector('.restart').addEventListener('click', reset);
 
-
+//moves
+function reset() {
+    for (let i = 0; i < cardsArrNames.length; i++) {
+        cardsArrNames[i].classList.remove('match');
+    }
+    getRandomListsAndAppend();
+    // moves = 0
+    moves = 0;
+    document.querySelector('.moves').textContent = 0;
+}
 
 function flipCard(e) {
-
-
-
     //if card has match dont toggle open and show
-    if (e.target.classList.contains('match') || opendNum == 2) {
-
-    }
+    if (e.target.classList.contains('match')) { }
     else {
         e.target.classList.toggle('open');
         e.target.classList.toggle('show');
 
-        var opendNum = 0;
-        var compared2Card = [];
+        var opendNum = 0;        //number of opened cards
+        var compared2Card = [];  // array with 2 opened cards to compare if matchin'
 
         for (var i = 0; i < cardsArrNames.length; i++) {
             if (cardsArrNames[i].classList.contains('open')) {
@@ -86,39 +97,35 @@ function flipCard(e) {
                 }
                 if (opendNum === 2) {
                     compared2Card[1] = cardsArrNames[i];
+
+                    //increase moves by one
+                    moves++;
+                    document.querySelector('.moves').textContent = moves;
+
+                    //compare if cards r matchin'
+                    if (compared2Card[0].children[0].classList[1] == compared2Card[1].children[0].classList[1]) {
+                        for (var k = 0; k < compared2Card.length; k++) {
+                            compared2Card[k].classList.add('match');
+                            compared2Card[k].classList.remove('open');
+                            compared2Card[k].classList.remove('show');
+                        }
+                        matchedCardsNum++;
+                        if (matchedCardsNum === 8) {
+                            // setTimeout(function() {}, 300);
+                            alert('u r won');
+                        }
+                    }
+                    else { //if not matchin'
+                        setTimeout(function () {
+                            for (var j = 0; j < compared2Card.length; j++) {
+                                compared2Card[j].classList.remove('open');
+                                compared2Card[j].classList.remove('show');
+                            }
+                        }, 500);
+                    }
                     break;
                 }
             }
         }
-        console.log(compared2Card);
-
-        if (opendNum === 2) {
-            if (compared2Card[0].children[0].classList[1] == compared2Card[1].children[0].classList[1]) {
-                compared2Card[0].classList.add('match');
-                compared2Card[1].classList.add('match');
-            }
-            else { //if not matched
-                compared2Card[0].classList.remove('open');
-                compared2Card[0].classList.remove('show');
-                compared2Card[1].classList.remove('open');
-                compared2Card[1].classList.remove('show');
-            }
-           
-        }
-        else {
-
-        }
-
-
-
-
-
-
     }
-
-
-
-
-
-
 }
