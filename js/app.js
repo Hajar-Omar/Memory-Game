@@ -112,6 +112,12 @@ function flipCard(e) {
                             compared2Card[k].classList.remove('show');
                         }
                         matchedCardsNum++;
+                        if (matchedCardsNum === 3) {
+                           document.querySelector('.stars li:nth-child(3) > i').className = 'fa fa-star-o';
+                        }
+                        if (matchedCardsNum === 6) {
+                           document.querySelector('.stars li:nth-child(2) > i').className = 'fa fa-star-o';                           
+                        }
                         if (matchedCardsNum === 8) {
                             //open the winning page
                             setTimeout(function () {
