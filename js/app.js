@@ -42,10 +42,6 @@ var cardsArrNames = [];
 var moves = Number(document.querySelector('.moves').textContent);
 var matchedCardsNum = 0;
 
-//load all card's icons second class
-// for (let i = 0; i < document.querySelectorAll('.card i').length; i++) {
-//     cardsArrNames[i] = document.querySelectorAll('.card i')[i].classList[1];
-// }
 for (let i = 0; i < document.querySelectorAll('.card').length; i++) {
     cardsArrNames[i] = document.querySelectorAll('.card')[i];
 }
@@ -84,6 +80,12 @@ function reset() {
     for (var n = 0; n < document.querySelectorAll('.stars li > i').length; n++) {
         document.querySelectorAll('.stars li > i')[n].className = 'fa fa-star';
     }
+
+    //reset timer
+    clearInterval(handleTimer);
+    handleTimer = 0;
+    totalSeconds = 0;
+    startTimer();
 }
 
 function flipCard(e) {
@@ -136,7 +138,7 @@ function flipCard(e) {
                                 compared2Card[j].classList.remove('open');
                                 compared2Card[j].classList.remove('show');
                             }
-                        }, 500);
+                        }, 30);
                     }
                     break;
                 }
@@ -144,3 +146,33 @@ function flipCard(e) {
         }
     }
 }
+
+
+
+
+//Timer start count up
+var handleTimer;
+startTimer();
+
+function startTimer() {
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    handleTimer = setInterval(setTime, 1000);
+    function setTime() {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds % 60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+    }
+}
+
+
