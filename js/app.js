@@ -41,6 +41,10 @@ function shuffle(array) {
 var cardsArrNames = [];
 var moves = Number(document.querySelector('.moves').textContent);
 var matchedCardsNum = 0;
+var handleTimer;
+var modal = document.getElementById('winningModal');
+var span = document.getElementsByClassName("close")[0];
+
 
 for (let i = 0; i < document.querySelectorAll('.card').length; i++) {
     cardsArrNames[i] = document.querySelectorAll('.card')[i];
@@ -119,7 +123,7 @@ function flipCard(e) {
                             compared2Card[k].classList.remove('show');
                         }
                         matchedCardsNum++;
-                        if (matchedCardsNum === 3) {
+                        if (matchedCardsNum === 2) {
                             document.querySelector('.stars li:nth-child(3) > i').className = 'fa fa-star-o';
                         }
                         if (matchedCardsNum === 6) {
@@ -127,9 +131,15 @@ function flipCard(e) {
                         }
                         if (matchedCardsNum === 8) {
                             //open the winning page
-                            setTimeout(function () {
-                                window.open('./winning.html?moves=' + moves, '_self');
-                            }, 300);
+                            // setTimeout(function () { window.open('./winning.html?moves=' + moves, '_self'); }, 300);
+                            modal.style.display = "block";
+
+                            clearInterval(handleTimer);
+                            handleTimer = 0;
+                            totalSeconds = 0;
+
+                            document.querySelector('.winMoves').textContent = moves;
+                            document.querySelector('.time').innerText = document.querySelector('.timer').innerText;
                         }
                     }
                     else { //if not matchin'
@@ -151,7 +161,6 @@ function flipCard(e) {
 
 
 //Timer start count up
-var handleTimer;
 startTimer();
 
 function startTimer() {
@@ -172,6 +181,23 @@ function startTimer() {
         } else {
             return valString;
         }
+    }
+}
+
+
+
+//modal
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+    modal.style.display = "none";
+    reset();
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+        reset();
     }
 }
 
