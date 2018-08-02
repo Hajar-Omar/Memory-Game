@@ -38,12 +38,12 @@ function shuffle(array) {
  */
 
 //variables
-let cardsArrNames = [];
-const moves = Number(document.querySelector('.moves').textContent);
-let matchedCardsNum = 0;
-let handleTimer;
-const modal = document.getElementById('winningModal');
-const span = document.getElementsByClassName("close")[0];
+var cardsArrNames = [];
+var moves = Number(document.querySelector('.moves').textContent);
+var matchedCardsNum = 0;
+var handleTimer;
+var modal = document.getElementById('winningModal');
+var span = document.getElementsByClassName("close")[0];
 
 
 for (let i = 0; i < document.querySelectorAll('.card').length; i++) {
