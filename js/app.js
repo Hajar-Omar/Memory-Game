@@ -38,12 +38,13 @@ function shuffle(array) {
  */
 
 //variables
-var cardsArrNames = [];
-var moves = Number(document.querySelector('.moves').textContent);
-var matchedCardsNum = 0;
-var handleTimer;
-var modal = document.getElementById('winningModal');
-var span = document.getElementsByClassName("close")[0];
+let cardsArrNames = [];
+let moves = Number(document.querySelector('.moves').textContent);
+let matchedCardsNum = 0;
+let handleTimer;
+let startsNum = 3;
+const modal = document.getElementById('winningModal');
+const span = document.getElementsByClassName("close")[0];
 
 
 for (let i = 0; i < document.querySelectorAll('.card').length; i++) {
@@ -123,10 +124,15 @@ function flipCard(e) {
                             compared2Card[k].classList.remove('show');
                         }
                         matchedCardsNum++;
-                        if (matchedCardsNum === 2) {
+                        if (moves < 15) {
+
+                        }
+                        else if (moves > 15 && moves <= 30) {  // 2 stars
+                            startsNum = 2;
                             document.querySelector('.stars li:nth-child(3) > i').className = 'fa fa-star-o';
                         }
-                        if (matchedCardsNum === 6) {
+                        else { // 1 star > 30
+                            startsNum = 1;
                             document.querySelector('.stars li:nth-child(2) > i').className = 'fa fa-star-o';
                         }
                         if (matchedCardsNum === 8) {
@@ -140,6 +146,7 @@ function flipCard(e) {
 
                             document.querySelector('.winMoves').textContent = moves;
                             document.querySelector('.time').innerText = document.querySelector('.timer').innerText;
+                            document.querySelector('.start-num').innerText = startsNum;
                         }
                     }
                     else { //if not matchin'
@@ -148,7 +155,7 @@ function flipCard(e) {
                                 compared2Card[j].classList.remove('open');
                                 compared2Card[j].classList.remove('show');
                             }
-                        }, 30);
+                        }, 5);
                     }
                     break;
                 }

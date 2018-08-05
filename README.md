@@ -10,6 +10,9 @@
 The memory game project has some HTML and CSS styling to display a version of the Memory Game project. technologies used are HTML, CSS, and JavaScript.
 
 To get started, open `index.html` and start playing the Memory Game.
+Srart to click on the cards and focus to see which cards are matched together to win.
+First you have 3 starts ,after 15 move you will get 2 stars, otherwise you will get 1 star.
+After you win you can play again.
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
