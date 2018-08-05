@@ -14,7 +14,7 @@ Srart to click on the cards and focus to see which cards are matched together to
 First you have 3 starts ,after 15 move you will get 2 stars, otherwise you will get 1 star.
 After you win you can play again.
 
-![Alt text](./img/memory.png?raw=true "Memory game")
+![Memory game](/img/memory.png "Memory game")
 
 For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
 
