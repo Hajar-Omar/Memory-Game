@@ -1,5 +1,5 @@
 # Memory Game Project 
-###[Demo here](https://hajar-omar.github.io/Memory-Game/index.html){:target="_blank" rel="noopener"}
+[Demo here](https://hajar-omar.github.io/Memory-Game/index.html)
 
 ## Table of Contents
 
